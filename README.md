@@ -1,22 +1,19 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.nextgate.technical-test' is invalid and this project uses 'com.nextgate.technicaltest' instead.
-
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## How To Run Me
+### Step1 - Using Maven
+There are two options
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+* Using the Maven wrapper  <b><i>./mvnw</b></i> or <b><i>mvnw install</b></i> 
+* Using the Maven client: <b><i>mvn</b></i> 
 
-### Guides
-The following guides illustrate how to use some features concretely:
+### Step2 - Install
+At the top of the project run an install to download the relevant dependencies and compile the code  
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+<b><i>./mvnw install</b></i>
 
+
+### Step2 - Install
+At the top of the project start spring boot which will run your jar, and any REST endpoints should be available at http://localhost:8008/{METHOD_NAME}
+
+<b><i>./mvnw spring-boot:run</b></i>
