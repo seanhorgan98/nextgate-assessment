@@ -1,3 +1,4 @@
+# Author: Sean Horgan
 # Getting Started
 
 ## How To Run Me
