@@ -20,6 +20,21 @@ public class Singer {
     private LocalDate dob;
     private String company;
 
+    protected Singer(){}
+
+    public Singer(String name, Gender sex, LocalDate dob, String company){
+        this.name = name;
+        this.sex = sex;
+        this.dob = dob;
+        this.company = company;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("Singer [id=%d, name='%s', sex=%s, dob=%s, company=%s]",
+                                id, name, sex.toString(), dob.toString(), company);
+    }
+
     public void setName(String name){
         this.name = name;
     }
