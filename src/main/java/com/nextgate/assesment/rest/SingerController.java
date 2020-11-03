@@ -1,16 +1,14 @@
 package com.nextgate.assesment.rest;
 
+import com.nextgate.assesment.exception.ResourceNotFoundException;
 import com.nextgate.assesment.datatypes.Singer;
 import com.nextgate.assesment.repositories.SingerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SingerController {
@@ -39,5 +37,13 @@ public class SingerController {
         return singerRepository.save(singer);
     }
 
+
+    @DeleteMapping("/posts/{postId}")
+    public ResponseEntity<?> deletePost(@PathVariable Long postId) {
+        return singerRepository.findById(postId).map(post -> {
+            singerRepository.delete(post);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+    }
 
 }
