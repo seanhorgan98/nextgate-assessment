@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long>{
-    Page<Album> findAlbumById(Long id, Pageable pageable);
+    Page<Album> findBySingerId(Long singerId, Pageable pageable);
     Optional<Album> findByIdAndSingerId(Long id, Long singerId);
 }
