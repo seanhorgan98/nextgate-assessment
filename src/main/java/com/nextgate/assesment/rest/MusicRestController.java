@@ -1,7 +1,8 @@
 package com.nextgate.assesment.rest;
 
 import com.nextgate.assesment.datatypes.Song;
-import com.nextgate.assesment.service.MusicService;
+import com.nextgate.assesment.repositories.MusicService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
