@@ -30,4 +30,12 @@ public class MusicRestController {
         return musicSerivce.getSongById(songId);
     }
     
+    /**
+     * GET method for homepage. Testing purposes
+     * @return String
+     */
+    @GetMapping("/")
+    public String home(){
+        return "Hello World!";
+    }
 }
