@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import com.nextgate.assesment.datatypes.Gender;
 
+import org.springframework.lang.NonNull;
+
 
 @Entity
 public class Singer {
@@ -15,9 +17,16 @@ public class Singer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NonNull
     private String name;
+
+    @NonNull
     private Gender sex;
+
+    @NonNull
     private LocalDate dob;
+
+    @NonNull
     private String company;
 
     protected Singer(){}
@@ -35,31 +44,75 @@ public class Singer {
                                 id, name, sex.toString(), dob.toString(), company);
     }
 
-    public void setName(String name){
-        this.name = name;
+
+    /**
+     * @return long return the id
+     */
+    public long getId() {
+        return id;
     }
 
-    public String getName(){
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return String return the name
+     */
+    public String getName() {
         return name;
     }
 
-    public Gender getSex(){
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return Gender return the sex
+     */
+    public Gender getSex() {
         return sex;
     }
 
-    public void setSex(Gender sex){
+    /**
+     * @param sex the sex to set
+     */
+    public void setSex(Gender sex) {
         this.sex = sex;
     }
 
-    public void setCompany(String company){
+    /**
+     * @return LocalDate return the date of birth
+     */
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    /**
+     * @param dob the date of birth to set
+     */
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    /**
+     * @return String return the company
+     */
+    public String getCompany() {
+        return company;
+    }
+
+    /**
+     * @param company the company to set
+     */
+    public void setCompany(String company) {
         this.company = company;
     }
 
-    public String getCompany(){
-        return company;
-    }
-    
-    public void setDob(LocalDate dob){
-        this.dob = dob;
-    }
 }
