@@ -1,11 +1,14 @@
 package com.nextgate.assesment.datatypes;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nextgate.assesment.datatypes.Gender;
 
 import org.springframework.lang.NonNull;
@@ -24,6 +27,7 @@ public class Singer {
     private Gender sex;
 
     @NonNull
+    @JsonFormat(pattern="yyyyMMdd")
     private LocalDate dob;
 
     @NonNull
@@ -31,10 +35,10 @@ public class Singer {
 
     protected Singer(){}
 
-    public Singer(String name, Gender sex, LocalDate dob, String company){
+    public Singer(String name, String sex, String dob, String company){
         this.name = name;
-        this.sex = sex;
-        this.dob = dob;
+        this.sex = Gender.valueOf(sex);        
+        this.dob = LocalDate.parse(dob);
         this.company = company;
     }
 
