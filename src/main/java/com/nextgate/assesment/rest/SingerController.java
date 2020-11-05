@@ -37,13 +37,17 @@ public class SingerController {
         return singerRepository.save(singer);
     }
 
-
-    @DeleteMapping("/posts/{postId}")
-    public ResponseEntity<?> deletePost(@PathVariable Long postId) {
-        return singerRepository.findById(postId).map(post -> {
-            singerRepository.delete(post);
+    /**
+     * DELETE method to delete a singer from the database
+     * @param postId
+     * @return
+     */
+    @DeleteMapping("/singers/{singerId}")
+    public ResponseEntity<?> deleteSinger(@PathVariable Long singerId) {
+        return singerRepository.findById(singerId).map(singer -> {
+            singerRepository.delete(singer);
             return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+        }).orElseThrow(() -> new ResourceNotFoundException("SingerId " + singerId + " not found"));
     }
 
 }
