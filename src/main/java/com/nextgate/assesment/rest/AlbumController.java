@@ -9,6 +9,7 @@ import com.nextgate.assesment.repositories.SingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @RestController
 public class AlbumController {
@@ -54,6 +55,19 @@ public class AlbumController {
             album.setSinger(singer);
             return albumRepository.save(album);
         }).orElseThrow(() -> new ResourceNotFoundException("SingerId " + singerId + " not found"));
+    }
+
+    /**
+     * DELETE method to delete an album from the database
+     * @param albumId
+     * @return
+     */
+    @DeleteMapping("/albums/{albumId}")
+    public ResponseEntity<?> deleteAlbum(@PathVariable Long albumId) {
+        return albumRepository.findById(albumId).map(album -> {
+            albumRepository.delete(album);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException("AlbumId " + albumId + " not found"));
     }
     
 }

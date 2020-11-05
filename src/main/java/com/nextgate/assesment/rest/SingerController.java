@@ -39,7 +39,7 @@ public class SingerController {
 
     /**
      * DELETE method to delete a singer from the database
-     * @param postId
+     * @param singerId
      * @return
      */
     @DeleteMapping("/singers/{singerId}")
