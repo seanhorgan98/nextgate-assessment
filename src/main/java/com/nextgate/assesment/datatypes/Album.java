@@ -36,6 +36,14 @@ public class Album {
     @JsonIgnore
     private Singer singer;
 
+    protected Album(){}
+
+    public Album (String title, int year, String company){
+        this.title = title;
+        this.year = year;
+        this.company = company;
+    }
+
     
 
     /**
