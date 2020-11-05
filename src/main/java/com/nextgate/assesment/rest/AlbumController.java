@@ -1,7 +1,6 @@
 package com.nextgate.assesment.rest;
 
 import com.nextgate.assesment.datatypes.Album;
-import com.nextgate.assesment.datatypes.Singer;
 import com.nextgate.assesment.exception.ResourceNotFoundException;
 import com.nextgate.assesment.repositories.AlbumRepository;
 import com.nextgate.assesment.repositories.SingerRepository;
