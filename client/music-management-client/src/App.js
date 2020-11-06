@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          What's up guys, it's ya boy
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  state = {
+    isLoading: true,
+    singers: []
+  };
+
+  async componentDidMount(){
+    const response = await fetch('/singers');
+    const body = await response.json();
+    
+    this.setState ({ singers: body.content, isLoading: false });
+  }
+
+  render(){
+    const {singers, isLoading} = this.state;
+
+    if (isLoading){
+      return <p>Loading...</p>
+    }
+    console.log(singers);
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div className="App-intro">
+            <h2>Singer List</h2>
+            {singers.map(singer =>
+              <div key={singer.id}>
+                { singer.name }
+              </div>
+            )}
+          </div>
+        </header>
+      </div>
+    )
+  }
+
 }
 
 export default App;
