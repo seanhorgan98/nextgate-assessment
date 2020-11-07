@@ -5,15 +5,7 @@ class AlbumResults extends Component {
 
     constructor(props){
         super(props);
-        this.state = {albums: [], isLoading: true};
-    }
-
-    componentDidMount() {
-        this.setState({isLoading: true});
-    
-        fetch('/albums')
-          .then(response => response.json())
-          .then(data => this.setState({albums: data.content, isLoading: false}));
+        this.state = {albums: props.albums, isLoading: props.isLoading};
     }
 
     render() {

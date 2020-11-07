@@ -5,17 +5,10 @@ class SingerResults extends Component {
 
     constructor(props){
         super(props);
-        this.state = {singers: [], isLoading: true};
+        this.state = {singers: props.singers, isLoading: props.isLoading};
     }
 
-    componentDidMount() {
-        this.setState({isLoading: true});
     
-        fetch('/singers')
-          .then(response => response.json())
-          .then(data => this.setState({singers: data.content, isLoading: false}));
-    }
-
     render() {
         const {singers, isLoading} = this.state;
     

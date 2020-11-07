@@ -9,8 +9,20 @@ import AlbumResults from './AlbumResults';
 class Search extends Component {
     constructor(props){
         super(props);
-        this.state = { showSingers: false, showAlbums: false }
+        this.state = { showSingers: false, showAlbums: false, singerData: [], albumData: [] }
         this.hideComponent = this.hideComponent.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({isLoading: true});
+    
+        fetch('/singers')
+          .then(response => response.json())
+          .then(data => this.setState({singerData: data.content, isLoading: false}));
+
+        fetch('/albums')
+          .then(response => response.json())
+          .then(data => this.setState({albumData: data.content, isLoading: false}));
     }
 
     hideComponent(name) {
@@ -30,7 +42,7 @@ class Search extends Component {
     }
 
   render() {
-      const { showSingers, showAlbums } = this.state;
+      const { showSingers, showAlbums, singerData, albumData, isLoading } = this.state;
     return (
       <div>
         <AppNavbar/>
@@ -44,8 +56,8 @@ class Search extends Component {
         <Button onClick={() => this.hideComponent("showAlbums")}>
             Search
           </Button>
-        {showSingers && <SingerResults/>}
-        {showAlbums && <AlbumResults/>}
+        {showSingers && <SingerResults singers={singerData} isLoading={isLoading}/>}
+        {showAlbums && <AlbumResults albums={albumData} isLoading={isLoading}/>}
       </div>
     );
   }
