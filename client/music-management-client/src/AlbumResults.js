@@ -8,6 +8,14 @@ class AlbumResults extends Component {
         this.state = {albums: props.albums, isLoading: props.isLoading};
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.albums !== this.props.albums){
+          this.setState({          
+            albums: this.props.albums
+          });
+        } 
+      }
+
     render() {
         const {albums, isLoading} = this.state;
     
@@ -16,7 +24,6 @@ class AlbumResults extends Component {
         }
 
         const albumList = albums.map(album => {
-            console.log(album.singer);
           return <tr key={album.id}>
             <td style={{whiteSpace: 'nowrap'}}>{album.title}</td>
             <td>{album.year}</td>
