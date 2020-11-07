@@ -9,8 +9,9 @@ import AlbumResults from './AlbumResults';
 class Search extends Component {
     constructor(props){
         super(props);
-        this.state = { showSingers: false, showAlbums: false, singerData: [], albumData: [] }
+        this.state = { showSingers: false, showAlbums: false, singerData: [], albumData: [], searchText: "" }
         this.hideComponent = this.hideComponent.bind(this);
+        this.refreshSearch = this.refreshSearch.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +27,6 @@ class Search extends Component {
     }
 
     hideComponent(name) {
-        console.log(name);
         switch (name) {
           case "showSingers":
             this.setState({ showSingers: true });
@@ -41,26 +41,48 @@ class Search extends Component {
         }
     }
 
+    refreshSearch(name){
+      this.setState({ showSingers: false, showAlbums: false });
+
+      this.hideComponent(name);
+    }
+
+    updateFilterText(e){
+      this.setState({
+        searchText: e.target.value
+      });
+    }
   render() {
       const { showSingers, showAlbums, singerData, albumData, isLoading } = this.state;
+      const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
+      let filteredSingers = singerData.filter((singer) => {
+        return singer.name.indexOf(this.state.searchText) !== -1;
+      });
+      console.log(filteredSingers);
+ 
     return (
       <div>
         <AppNavbar/>
-        <h2>Search for Singer</h2>
-        <SearchBar/>
-        <Button onClick={() => this.hideComponent("showSingers")}>
-            Search
-          </Button>
+        <form>
+            <h2>Search for Singer</h2>
+            <input style={BarStyling} placeholder={"Search..."} value={this.state.searchText} onChange={this.updateFilterText.bind(this)}></input>
+            <Button onClick={() => this.refreshSearch("showSingers")}>
+                Search
+            </Button>
+        </form>
+        
+        
         <h2>Search for Album</h2>
         <SearchBar/>
-        <Button onClick={() => this.hideComponent("showAlbums")}>
+        <Button onClick={() => this.refreshSearch("showAlbums")}>
             Search
           </Button>
-        {showSingers && <SingerResults singers={singerData} isLoading={isLoading}/>}
+        {showSingers && <SingerResults singers={filteredSingers} isLoading={isLoading}/>}
         {showAlbums && <AlbumResults albums={albumData} isLoading={isLoading}/>}
       </div>
     );
   }
 }
+
 
 export default Search;
