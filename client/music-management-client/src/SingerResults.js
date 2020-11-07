@@ -8,6 +8,13 @@ class SingerResults extends Component {
         this.state = {singers: props.singers, isLoading: props.isLoading};
     }
 
+    componentDidUpdate(prevProps) {
+      if(prevProps.singers !== this.props.singers){
+        this.setState({          
+            singers: this.props.singers
+        });
+      } 
+    }
     
     render() {
         const {singers, isLoading} = this.state;
