@@ -30,10 +30,9 @@ public class Album {
     private String company;
 
     //Many to One foreign key for singer
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "singer_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Singer singer;
 
     protected Album(){}
@@ -105,8 +104,8 @@ public class Album {
     /**
      * @return Singer return the singer
      */
-    public Singer getSinger() {
-        return singer;
+    public String getSinger() {
+        return singer.getName();
     }
 
     /**
