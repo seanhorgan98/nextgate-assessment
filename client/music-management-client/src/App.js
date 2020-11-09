@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home';
 import Search from './Search';
 import Insert from './Insert';
 import CreateSinger from './CreateSinger';
 import CreateAlbum from './CreateAlbum';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './Login';
 
 class App extends Component{
   state = {
@@ -24,7 +24,7 @@ class App extends Component{
     return (
       <Router>
         <Switch>
-          <Route path='/' exact={true} component={Home}/>
+          <Route path='/' exact={true} component={Login}/>
           <Route path='/search' exact={true} component={Search}/>
           <Route path='/insert' exact={true} component={Insert}/>
           <Route path='/create_singer' exact={true} component={CreateSinger}/>
