@@ -13,6 +13,7 @@ class Search extends Component {
         this.refreshSearch = this.refreshSearch.bind(this);
     }
 
+    //Load in data from API
     componentDidMount() {
         this.setState({isLoading: true});
     
@@ -25,6 +26,7 @@ class Search extends Component {
           .then(data => this.setState({albumData: data.content, isLoading: false}));
     }
 
+    //Showing and hiding the table data when each search button is pressed
     hideComponent(name) {
         switch (name) {
           case "showSingers":
@@ -40,18 +42,21 @@ class Search extends Component {
         }
     }
 
+    //Update the search table
     refreshSearch(name){
       this.setState({ showSingers: false, showAlbums: false });
 
       this.hideComponent(name);
     }
 
+    //Update the state of the text in the singer search bar
     updateSingerFilterText(e){
       this.setState({
         singerSearchText: e.target.value
       });
     }
 
+    //Update the state of the text in the album search bar
     updateAlbumFilterText(e){
       this.setState({
         albumSearchText: e.target.value
@@ -62,10 +67,12 @@ class Search extends Component {
       const { showSingers, showAlbums, singerData, albumData, isLoading } = this.state;
       const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
 
+      //filter the singer data by search term
       let filteredSingers = singerData.filter((singer) => {
         return singer.name.indexOf(this.state.singerSearchText) !== -1;
       });
 
+      //filter the album data by search term
       let filteredAlbums = albumData.filter((album) => {
         return album.title.indexOf(this.state.albumSearchText) !== -1;
       });

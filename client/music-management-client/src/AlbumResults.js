@@ -8,6 +8,7 @@ class AlbumResults extends Component {
         this.state = {albums: props.albums, isLoading: props.isLoading};
     }
 
+    //Update state when props change
     componentDidUpdate(prevProps) {
         if(prevProps.albums !== this.props.albums){
           this.setState({          

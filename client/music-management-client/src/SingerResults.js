@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Table } from 'reactstrap';
 
+
 class SingerResults extends Component {
 
     constructor(props){
@@ -8,6 +9,7 @@ class SingerResults extends Component {
         this.state = {singers: props.singers, isLoading: props.isLoading};
     }
 
+    //Update state whenever props change
     componentDidUpdate(prevProps) {
       if(prevProps.singers !== this.props.singers){
         this.setState({          
@@ -15,8 +17,11 @@ class SingerResults extends Component {
         });
       } 
     }
+
+    
     
     render() {
+
         const {singers, isLoading} = this.state;
     
         if (isLoading) {

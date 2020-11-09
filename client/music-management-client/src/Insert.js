@@ -14,6 +14,8 @@ class Insert extends Component {
         <Button href="/create_album">
           Create Album
         </Button>
+        <h3>Upload from file</h3>
+        <input type="file" name="file" onChange={this.onChangeHandler}/>
       </div>
     );
   }

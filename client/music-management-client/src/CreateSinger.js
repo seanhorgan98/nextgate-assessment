@@ -34,6 +34,7 @@ class CreateSinger extends Component{
 
       }
 
+    //Update state onChange
     myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;

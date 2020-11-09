@@ -22,6 +22,7 @@ class CreateAlbum extends Component{
           .then(data => this.setState({singerData: data.content}));
       }
 
+      //Update state onChange
       myChangeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
