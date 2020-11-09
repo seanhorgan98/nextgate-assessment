@@ -34,7 +34,7 @@ export default class AppNavbar extends Component {
             <NavLink href="https://github.com/seanhorgan98">GitHub</NavLink>
           </NavItem>
           <NavItem>
-            <Button bsstyle="primary">Login</Button>
+            <Button bsstyle="primary" href="/login">Login</Button>
           </NavItem>
         </Nav>
       </Collapse>

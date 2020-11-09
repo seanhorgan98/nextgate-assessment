@@ -6,6 +6,7 @@ import CreateSinger from './CreateSinger';
 import CreateAlbum from './CreateAlbum';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './Login';
+import Home from './Home';
 
 class App extends Component{
   state = {
@@ -24,7 +25,8 @@ class App extends Component{
     return (
       <Router>
         <Switch>
-          <Route path='/' exact={true} component={Login}/>
+          <Route path='/' exact={true} component={Home}/>
+          <Route path='/login' exact={true} component={Login}/>
           <Route path='/search' exact={true} component={Search}/>
           <Route path='/insert' exact={true} component={Insert}/>
           <Route path='/create_singer' exact={true} component={CreateSinger}/>

@@ -7,7 +7,7 @@ class Home extends Component {
     return (
       <div>
         <AppNavbar/>
-        <h1>Home</h1>
+        <h3>Welcome to the music management website!</h3>
       </div>
     );
   }
